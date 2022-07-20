@@ -18,6 +18,13 @@
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
+    <q-footer >
+        <q-tabs>
+        <q-route-tab  icon="settings" label="Home"  to="/" />
+        <q-route-tab name="Setting" icon="settings" label="Setting" to="/setting" exact/>
+        <q-tab name="movies" icon="movie" label="Movies" />
+       </q-tabs>
+       </q-footer>
 
     <q-drawer
       v-model="leftDrawerOpen"
@@ -35,6 +42,7 @@
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
+
         />
       </q-list>
     </q-drawer>
@@ -51,10 +59,10 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
+    title: 'Home',
+    caption: 'Home',
     icon: 'school',
-    link: 'https://quasar.dev'
+    link: '/'
   },
   {
     title: 'Setting',
