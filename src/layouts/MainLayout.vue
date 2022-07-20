@@ -28,6 +28,7 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
+      :breakpoint="767"
       show-if-above
       bordered
     >
@@ -128,3 +129,10 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+@media screen and (min-width: 768px){
+  .q-footer{
+    display: none;
+  }
+}
+</style>
