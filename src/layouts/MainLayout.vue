@@ -10,10 +10,10 @@
     <q-footer >
         <q-tabs>
         <q-route-tab  icon="settings" label="Home"  to="/" />
-        <q-route-tab name="Setting" icon="settings" label="Setting" to="/setting" exact/>
+        <q-route-tab name="Setting" icon="supervisor_account" label="Customer" to="/customer" exact/>
         <q-tab name="movies" icon="movie" label="Movies" />
        </q-tabs>
-       </q-footer>
+      </q-footer>
 
     <q-drawer
       v-model="leftDrawerOpen"
@@ -58,10 +58,10 @@ const linksList = [
     link: '/'
   },
   {
-    title: 'Setting',
-    caption: 'setting page',
-    icon: 'settings',
-    link: '/#/setting'
+    title: 'Customer',
+    caption: 'customer page',
+    icon: 'supervisor_account',
+    link: '/#/customer'
   },
   {
     title: 'Github',

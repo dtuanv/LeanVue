@@ -1,22 +1,41 @@
 <template>
-  <q-page>
-      <p class="settingPage">>Welcome To Setting Page</p>
+  <q-page class="q-pa-md">
+      <p class="settingPage">Welcome To Setting Page</p>
+  <q-list bordered
+      separator>
     <q-item v-for="task in tasks"
           :task="task"
           :key="id"
-          @click= 'tast.completed = !task.completed'
+          @click= 'task.completed = !task.completed'
+          :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
             v-ripple>
 
       <q-item-section side top>
       <q-checkbox v-model="task.completed" />
        </q-item-section>
-      <q-item-label>{{task.name}}
-        <div>{{task.dueDate}}</div>
-        <div>{{task.gender}}</div>
-      </q-item-label>
+       <q-item-section>
+        <q-item-label>{{task.name}} </q-item-label>
+       </q-item-section>
+       <q-item-section>
+       <div>{{task.gender}}</div>
+       </q-item-section>
 
+
+   <q-item-section side >
+    <div class="row ">
+        <q-icon name="event"
+                size=25px
+                color="yellow"
+                class="q-mr-xs" />
+
+      <div class="column " >
+          <q-item-label caption> {{task.dueDate}}</q-item-label>
+        </div>
+         </div>
+        </q-item-section>
 
 </q-item>
+</q-list>
   </q-page>
 </template>
 <script>
@@ -30,20 +49,20 @@ export default {
         { id:1,
           name:'Oanh',
           dueDate:'21/11/1998',
-          gender: 'male',
+          gender: 'Male',
           completed: false,
         },
         {id:2,
           name:'Tuan',
           dueDate:'12/05/2000',
-          gender: 'male',
+          gender: 'Male',
           completed: false,
         },
         {
           id: 3,
           name:'Dung',
           dueDate :'06/05/2011',
-          gender:'male',
+          gender:'Male',
           completed:false,
         }
       ]
