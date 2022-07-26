@@ -2,20 +2,9 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="absolute-center">
+         Learn Quasar
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
     <q-footer >
@@ -29,9 +18,12 @@
     <q-drawer
       v-model="leftDrawerOpen"
       :breakpoint="767"
+      :with="250"
       show-if-above
       bordered
-    >
+      class="drawColor"
+      content-class="bg-primary"   > <!-- no result -->
+
       <q-list>
         <q-item-label
           header
@@ -129,10 +121,13 @@ export default defineComponent({
   }
 })
 </script>
-<style>
+<style lang="scss">
 @media screen and (min-width: 768px){
   .q-footer{
     display: none;
   }
+}
+.drawColor{
+  background-color: $primary;
 }
 </style>

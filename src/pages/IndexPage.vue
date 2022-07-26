@@ -17,16 +17,19 @@ export default {
     return {
       tasks: [
         {
+          id:1,
           name:'Oanh',
           dueDate:'21/11/1998',
           gender: 'male'
         },
         {
+          id: 2,
           name:'Tuan',
           dueDate:'12/05/2000',
           gender: 'male'
         },
         {
+          id :3 ,
           name:'Dung',
           dueDate :'06/05/2011',
           gender:'male'
