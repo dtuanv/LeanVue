@@ -8,6 +8,7 @@
           :key="id"
           @click= 'task.completed = !task.completed'
           :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
+          clickable
             v-ripple>
 
       <q-item-section side top>
@@ -39,36 +40,14 @@
   </q-page>
 </template>
 <script>
-// import { defineComponent } from 'vue'
+
+import { mapGetters } from 'vuex'
 
 export default {
   // name: 'IndexPage'
-  data (){
-    return {
-      tasks: [
-        { id:1,
-          name:'Oanh',
-          dueDate:'21/11/1998',
-          gender: 'Male',
-          completed: false,
-        },
-        {id:2,
-          name:'Tuan',
-          dueDate:'12/05/2000',
-          gender: 'Male',
-          completed: false,
-        },
-        {
-          id: 3,
-          name:'Dung',
-          dueDate :'06/05/2011',
-          gender:'Male',
-          completed:false,
-        }
-      ]
-    }
-
-  },
+computed: {
+  ...mapGetters('tasks', ['tasks'])
+},
   components: {
     'task': require('components/Task.vue').default
   }
