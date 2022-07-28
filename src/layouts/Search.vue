@@ -4,7 +4,8 @@
     <!-- (Optional) The Header -->
     <q-header elevated >
       <q-toolbar>
-    <q-toolbar-title>Jasmin </q-toolbar-title>
+    <!-- <q-toolbar-title>Jasmin </q-toolbar-title> -->
+    <a href="/"><q-avatar><img src="/img/ricevn.jpg" ></q-avatar></a>
       <q-tabs>
         <q-route-tab :to='"/"' label="Home" />
         <q-route-tab
