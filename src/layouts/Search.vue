@@ -2,21 +2,9 @@
   <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated>
+    <q-header elevated >
       <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Header
-        </q-toolbar-title>
-      </q-toolbar>
-
+    <q-toolbar-title>Jasmin </q-toolbar-title>
       <q-tabs>
         <q-route-tab :to='"/"' label="Home" />
         <q-route-tab
@@ -25,61 +13,40 @@
           label="Product"
         />
         <q-route-tab
-            :to="{name:'contact', params:{id:'contact'}}"
+            :to="{name:'contact'}"
             replace
           	label="Contact" />
         <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
+
+          to="login"
           replace
-          label="Other Tab"
+          label="Login"
         />
       </q-tabs>
+</q-toolbar>
     </q-header>
 
     <!-- (Optional) The Footer -->
     <q-footer>
       <q-tabs switch-indicator>
         <q-route-tab
-          icon="map"
-          to="/your/route"
+          icon="home"
+          to="/"
           replace
-          label="One Tab"
+          label="Home"
         />
         <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
+          icon="shopping_basket"
+          :to="{name:'product', params:{id:1}}"
+
           replace
-          label="Other Tab"
+          label="Product"
         />
       </q-tabs>
 
-      <!-- <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="toggleLeftDrawer"
-        /> -->
-        <!-- <q-toolbar-title>
-          Footer
-        </q-toolbar-title> -->
-      <!-- </q-toolbar> -->
     </q-footer>
 
-    <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <!-- <q-drawer
-      v-model="leftDrawerOpen"
-      side="left"
-      bordered
-      class="bg-grey-2"
-    > -->
-      <!-- QScrollArea is optional -->
-      <!-- <q-scroll-area class="fit q-pa-sm"> -->
-        <!-- Content here -->
-      <!-- </q-scroll-area>
-    </q-drawer> -->
+
 
     <q-page-container>
       <!-- This is where pages get injected -->
