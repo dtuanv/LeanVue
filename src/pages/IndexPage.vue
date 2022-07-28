@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex flex-center">
+    <h3>Wellcome to a App of Tuan</h3>
     <task v-for="task in tasks"
       :task="task">
     </task>

@@ -3,13 +3,14 @@
       <p class="settingPage">Welcome To Setting Page</p>
   <q-list bordered
       separator>
-    <q-item v-for="task in tasks"
+    <q-item v-for="(task,key) in tasks"
           :task="task"
-          :key="id"
-          @click= 'task.completed = !task.completed'
+          :key="key"
           :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
-          clickable
-            v-ripple>
+          @click= 'task.completed = !task.completed'
+
+
+            >
 
       <q-item-section side top>
       <q-checkbox v-model="task.completed" />
@@ -47,10 +48,8 @@ export default {
   // name: 'IndexPage'
 computed: {
   ...mapGetters('tasks', ['tasks'])
-},
-  components: {
-    'task': require('components/Task.vue').default
-  }
+}
+
 }
 </script>
 
