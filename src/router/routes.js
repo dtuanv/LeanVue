@@ -4,7 +4,7 @@ const routes = [
     component: () => import('layouts/Search.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-       { path : '/customer', component:() => import('src/pages/Customer.vue')},
+       { path : '/customer', name :'customer', component:() => import('src/pages/Customer.vue')},
        { path : '/product/:id',
          name:'product',
          component:() => import('src/pages/Product.vue')},
@@ -14,6 +14,7 @@ const routes = [
           component:() => import('src/pages/Contact.vue')
 
          },
+         {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')}
     ]
   },
   // {   path: '/test',

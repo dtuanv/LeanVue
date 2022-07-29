@@ -1,13 +1,15 @@
 <template>
-  <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
+  <q-layout view="hHh Lpr fFf" > <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated >
+    <q-header  >
       <q-toolbar>
     <!-- <q-toolbar-title>Jasmin </q-toolbar-title> -->
     <a href="/"><q-avatar><img src="/img/ricevn.jpg" ></q-avatar></a>
       <q-tabs>
+
         <q-route-tab :to='"/"' label="Home" />
+        <q-route-tab :to="{name:'customer'}" label="Customer"/>
         <q-route-tab
           :to="{name:'product', params:{id:1}}"
           replace
@@ -19,7 +21,7 @@
           	label="Contact" />
         <q-route-tab
 
-          to="login"
+          :to="{name:'login'}"
           replace
           label="Login"
         />

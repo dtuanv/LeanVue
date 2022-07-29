@@ -6,8 +6,10 @@
     <q-item v-for="(task,key) in tasks"
           :task="task"
           :key="key"
-          :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
+          clickable
           @click= 'task.completed = !task.completed'
+          :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
+
 
 
             >
@@ -26,7 +28,7 @@
    <q-item-section side >
     <div class="row ">
         <q-icon name="event"
-                size=25px
+                size=1rem
                 color="yellow"
                 class="q-mr-xs" />
 
