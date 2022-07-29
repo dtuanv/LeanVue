@@ -4,7 +4,7 @@
     <!-- content -->
 
     <q-card class="flex inline shadow-15 flex-center"
-      style="max-width:300px">
+      style="max-width:12rem">
 
       <q-card-section>
          <div class="text-h4 text-grey-9">Corn</div>
@@ -32,8 +32,10 @@
       </q-card-section>
       <!-- action -->
       <q-card-section>
-      <q-card-actions vertical>
-        <q-btn label="Chose"/>
+
+      <q-card-actions vertical >
+       <q-ajax-bar color="green-7"/>
+        <q-btn label="Chose" @click="getTodos" />
         <q-btn label="Read More"/>
       </q-card-actions>
       </q-card-section>
@@ -46,13 +48,21 @@
 
 <script>
 import {ref} from 'vue'
+import axios from 'axios'
 export default {
   // name: 'PageName',
   setup(){
     const ratingModel = ref(3)
-    return {
-      ratingModel
+
+    const getTodos = () => {
+      return axios.get('http://todo-api.quasarcast.com/todos')
+
     }
+      return {
+      ratingModel,
+      getTodos,
+    }
+
   }
 
 }
