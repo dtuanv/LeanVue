@@ -20,6 +20,11 @@
             replace
           	label="Contact" />
         <q-route-tab
+          :to="{name:'test'}"
+          label="Test"
+
+          />
+        <q-route-tab
 
           :to="{name:'login'}"
           replace

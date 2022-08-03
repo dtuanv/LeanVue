@@ -1,5 +1,7 @@
+import Register from "../pages/Register.vue"
 const routes = [
   {
+
     path: '/',
     component: () => import('layouts/Search.vue'),
     children: [
@@ -14,14 +16,10 @@ const routes = [
           component:() => import('src/pages/Contact.vue')
 
          },
-         {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')}
+         {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
+         {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')}
     ]
   },
-  // {   path: '/test',
-  // component: () => import('pages/Test.vue'),
-
-  // },
-
 
   // Always leave this as last one,
   // but you can also remove it
