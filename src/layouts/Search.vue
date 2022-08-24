@@ -20,6 +20,10 @@
             replace
           	label="Contact" />
         <q-route-tab
+          :to="{name:'partner'}"
+          label="Partner"
+        />
+        <q-route-tab
           :to="{name:'test'}"
           label="Test"
 
