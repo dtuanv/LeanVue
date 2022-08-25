@@ -1,15 +1,19 @@
 <template>
   <q-page padding>
     <div class="q-pa-md">
-      <template>
-        <q-input
-        place>
+      <div class="float-right">
+        <q-input filled  dense
+        place label="Search"
+        style="width:200px"
+       v-model="filter"
+        >
 
         </q-input>
-      </template>
+      </div>
     <q-table
     :columns="columns"
     :rows="rows"
+    :filter="filter"
 
     >
 
@@ -19,6 +23,7 @@
         color="positive"
         class="float-right"
         dense
+        to='customer/0'
 
       >
 
@@ -27,7 +32,7 @@
     <template v-slot:body-cell-actions="props"  >
       <q-td :props ="props" >
         <q-btn
-          @click="editRows(props)"
+          @click="editRow(props)"
           icon="edit"
           color="primary"
           dense
@@ -57,6 +62,7 @@
 import { defineComponent, ref } from "vue";
 import axios from "axios";
 
+
 const columns = [
   { name: "firstName", label:"First Name" , field:"firstName"},
   { name: "lastName", label:"Last Name" , field:"lastName"},
@@ -66,13 +72,14 @@ const columns = [
 
 ]
 const rows= ref([]);
+const filter =ref("");
 
 export default {
   // name: 'PageName',
   setup(){
 
     axios
-      .get("http://localhost:8585/customer")
+      .get("http://localhost:8686/customer")
       .then((response) => {
         rows.value = response.data;
       })
@@ -84,11 +91,13 @@ export default {
     return{
       columns,
       rows,
+      filter,
     }
   },
   methods:{
     editRow(props){
-      this.$router.push("./customer/" +props.row.customer_id +"/");
+      this.$router.push("./customer/" +props.row.customerId +"/");
+      console.log("click edit Row ", props.row.customer_id)
     }
   }
 }

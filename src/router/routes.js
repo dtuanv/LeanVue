@@ -6,7 +6,8 @@ const routes = [
     component: () => import('layouts/Search.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-       { path : '/customer', name :'customer', component:() => import('src/pages/Customer.vue')},
+       { path : '/customer', name :'customer', component:() => import('src/pages/customer/Customer.vue')},
+       { path : '/customer/:customerId', name :'detail', component:() => import('src/pages/customer/Detail.vue')},
        { path : '/product/:id',
          name:'product',
          component:() => import('src/pages/Product.vue')},
