@@ -31,6 +31,7 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter, useRoute } from "vue-router";
 import {useQuasar} from 'quasar';
+import { propsToAttrMap } from "@vue/shared";
 const customer = ref({});
 export default {
   setup() {
@@ -76,15 +77,16 @@ export default {
       onSubmit(){
         console.log("Submit is running!")
         if(customerId == 0){
+          console.log("Customer id = 0")
            axios({
             method: "post",
-            url: `http://localhost:8686/customer/saved`,
-            // data: job.value,
+            url: "http://localhost:8686/customer/saved",
+            data: customer.value,
 
           })
           .then(response => {
             console.log("in submit to post")
-           router.replace("/customer/"),
+           router.replace("/customer"),
            $q.notify({
             message : 'new Customer saved',
             color:'positive',
@@ -94,8 +96,14 @@ export default {
           })
 
         } else {
-          axios.put("http://localhost:8686/customer/"+ customerId)
+          axios({
+            method: 'put',
+            url:"http://localhost:8686/customer/" + customerId,
+            data: customer.value,
+          })
+
           .then(response => {
+            router.replace("/customer");
             $q.notify({
               message:'customer updated!',
               color:'positive',
