@@ -12,7 +12,14 @@
         >
         </q-input>
       </div>
-      <q-table :columns="columns" :rows="rows" :filter="filter">
+      <q-table :columns="columns" :rows="rows" :filter="filter" :loading="loading"
+      row-key="index"
+      virtual-scroll
+      :virtual-scroll-item-size="48"
+      :virtual-scroll-sticky-size-start="48"
+      :pagination="pagination"
+      :rows-per-page-options="[0]"
+      @virtual-scroll="onScroll">
         <template v-slot:top-right>
           <q-btn
             label="Customer hinzufügen"
@@ -48,20 +55,31 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { ref, computed, nextTick } from 'vue'
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
 
 const columns = [
-  { name: "firstName", label: "First Name", field: "firstName" },
-  { name: "lastName", label: "Last Name", field: "lastName" },
+  { name: "firstName", label: "First Name", field: "firstName", sortable: true, },
+  { name: "lastName", label: "Last Name", field: "lastName",sortable: true, },
   { name: "gender", label: "Gender", field: "gender" },
   { name: "email", label: "Email", field: "email" },
   { name: "actions", label: "Action", field: "" },
 ];
 const rows = ref([]);
 const filter = ref("");
+// we generate lots of rows here
+let allRows = []
+for (let i = 0; i < 1000; i++) {
+  allRows = allRows.concat(rows.value.slice(0).map(r => ({ ...r })))
+}
+allRows.forEach((row, index) => {
+  row.index = index
+})
+
+const pageSize = 50
+const lastPage = Math.ceil(allRows.length / pageSize)
 
 export default {
   // name: 'PageName',
@@ -69,6 +87,10 @@ export default {
     const $q = useQuasar();
     const route = useRoute();
     const router = useRouter();
+    const nextPage = ref(2)
+    const loading = ref(false)
+
+    // const rows = computed(() => allRows.slice(0, pageSize * (nextPage.value - 1)))
 
     axios
       .get("http://localhost:8686/customer")
@@ -84,6 +106,25 @@ export default {
       columns,
       rows,
       filter,
+      nextPage,
+      loading,
+
+      pagination: { rowsPerPage: 0 },
+      onScroll ({ to, ref }) {
+        const lastIndex = rows.value.length - 1
+
+        if (loading.value !== true && nextPage.value < lastPage && to === lastIndex) {
+          loading.value = true
+
+          setTimeout(() => {
+            nextPage.value++
+            nextTick(() => {
+              ref.refresh()
+              loading.value = false
+            })
+          }, 500)
+        }
+      },
       deleteRow(props) {
         console.log("props ", props),
           console.log(
@@ -118,7 +159,10 @@ export default {
                 avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
               });
             });
+
       },
+
+
     };
   },
   methods: {
