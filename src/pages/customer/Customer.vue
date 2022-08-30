@@ -149,7 +149,7 @@ export default {
                   $q.notify({
                     message: "customer deleted!",
                     color: "positive",
-                    avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+                    avatar: '/img/trangTi.png',
                   });
                 });
             })
@@ -157,7 +157,7 @@ export default {
               $q.notify({
                 message: "Cancel!",
                 color: "negative",
-                avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+                avatar: '/img/trangTi.png',
               });
             });
 

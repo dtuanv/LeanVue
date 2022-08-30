@@ -12,21 +12,13 @@
               label="Name"
               class="col-8"
             />
-
-
-
             <q-input
               standout="bg-teal text-white"
               v-model="imageUrl"
               label="Image Url"
               class="col-8"
-
             />
-
-
             <q-input label="Decription" v-model="decription" filled autogrow class="col-8" />
-
-
           <q-btn
             color="primary"
             type="submit"
@@ -38,7 +30,6 @@
        </div>
       <!-- <div class="col-6"></div> -->
       <!-- <div class="col-6"></div> -->
-
 </template>
 <script >
 import { ref, computed, nextTick } from "vue";
@@ -48,11 +39,9 @@ import { useRoute, useRouter } from "vue-router";
 
 export default {
   setup() {
-
-
+    const $q = useQuasar();
     const router = useRouter();
     return {
-
       name: ref(""),
       decription: ref(""),
       imageUrl: ref(""),
@@ -73,6 +62,12 @@ export default {
           },
         })
           .then(() => {
+            $q.notify({
+              message:'new Category was created',
+
+              color:'positive',
+              avatar:'/img/trangTi.png',
+            })
             console.log("Category saved");
             router.replace("/customer");
           })

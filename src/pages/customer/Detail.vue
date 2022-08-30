@@ -90,7 +90,7 @@ export default {
            $q.notify({
             message : 'new Customer saved',
             color:'positive',
-            avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+            avatar: '/img/trangTi.png',
             })
               console.log("saved ")
           })
@@ -107,7 +107,7 @@ export default {
             $q.notify({
               message:'customer updated!',
               color:'positive',
-               avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+               avatar: '/img/trangTi.png',
 
             })
           })
