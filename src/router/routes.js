@@ -10,13 +10,15 @@ const routes = [
        { path : '/customer/:customerId', name :'detail', component:() => import('src/pages/customer/Detail.vue')},
        { path : '/product/:id',
          name:'product',
-         component:() => import('src/pages/Product.vue')},
+         component:() => import('src/pages/product/Product.vue')},
          {
           path:'contact',
           name:'contact',
           component:() => import('src/pages/Contact.vue')
 
          },
+         {path : '/admin/category/add', name : 'addCategory', component:() => import('src/pages/product/AddCategory.vue')},
+         {path : '/admin/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
          {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
          {path : '/partner', name : 'partner', component:() => import('src/pages/Partner.vue')},
          {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')}

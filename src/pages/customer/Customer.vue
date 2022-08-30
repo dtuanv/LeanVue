@@ -1,7 +1,8 @@
 <template>
   <q-page padding>
     <div class="q-pa-md">
-      <div class="float-right">
+      <!-- <div class="float-right"> -->
+      <div>
         <q-input
           filled
           dense
