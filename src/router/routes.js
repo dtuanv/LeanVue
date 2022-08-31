@@ -19,7 +19,10 @@ const routes = [
          },
          {path : '/admin/category/add', name : 'addCategory', component:() => import('src/pages/product/AddCategory.vue')},
          {path : '/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
-         {path : '/category/box', name : 'categoryBox', component:() => import('src/pages/product/CategoryBox.vue')},
+        //  {path : '/category/box', name : 'categoryBox', component:() => import('src/pages/product/CategoryBox.vue')},
+
+
+         {path : '/admin', name : 'admin', component:() => import('src/pages/admin/Admin.vue')},
          {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
          {path : '/partner', name : 'partner', component:() => import('src/pages/Partner.vue')},
          {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')}
