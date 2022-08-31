@@ -1,6 +1,8 @@
 <template>
-  <div class="q-pa-md row items-start q-gutter-md">
-    <q-card   class="my-card flex  shadow-5 ">
+  <!-- <div class="q-pa-md row items-start q-gutter-md"> -->
+  <div class="q-pa-md ">
+    <!-- <q-card   class="my-card flex  shadow-5 "> -->
+    <q-card   class="full-width row  justify-start items-start content-center ">
       <!-- <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" /> -->
       <q-img :src="category.imageUrl" />
 

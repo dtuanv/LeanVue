@@ -15,11 +15,14 @@
 
 
 
-      <div class="row">
+      <!-- <div class="row"> -->
+      <div class="full-width row wrap justify-center items-start content-center ">
+        <div  class="col-xs-12 col-md-4 q-col-gutter-md wrap">
         <div v-for="category in categories" :key="category.id">
           <CategoryBox :category="category"></CategoryBox>
         </div>
 
+      </div>
       </div>
        </div>
       <!-- <div class="col-6"></div> -->
