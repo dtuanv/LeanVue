@@ -11,6 +11,7 @@
         <div class="col-4"></div>
          <q-btn to="/admin/category/add" color="secondary" label="Add category" class=""  />
       </div>
+      <div class="float-right"><q-btn to="/admin/category/edit" color="secondary" icon="edit" label="Edit Resource of Categories"></q-btn></div>
     <q-separator></q-separator>
 
 

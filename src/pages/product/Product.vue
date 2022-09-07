@@ -1,5 +1,10 @@
 <template>
-  <div class="text-h4 flex flex-center">Our Product</div>
+
+  <div class="row flex flex-center">
+    <div class="text-h4 ">Our Product</div>
+
+  </div>
+  <div class=" row flex flex-center q-mt-md text-h5"><q-btn label="Category Manager" to="/category"></q-btn></div>
   <q-page>
     <!-- content -->
     <div class="q-pa-md row items-stretch">

@@ -3,28 +3,25 @@
 
       <!-- make form in center -->
       <div class="">
-        <h4 >Add Category</h4>
-        <q-form class=" row q-gutter-md" >
 
-            <q-input
-              standout="bg-teal text-white"
-              v-model="name"
-              label="Name"
-              class="col-8"
-            />
-            <q-input
-              standout="bg-teal text-white"
-              v-model="imageUrl"
-              label="Image Url"
-              class="col-8"
-            />
-            <q-input label="Decription" v-model="decription" filled autogrow class="col-8" />
-          <q-btn
+        <q-form  >
+
+          <div class="justify-center flex text-h5 	q-mb-lg">Add Category</div>
+    <!-- content -->
+    <div class="q-gutter-md edit_category  " style="max-width: 500px">
+
+      <q-input filled v-model="name" label="Name" />
+      <q-input filled v-model="imageUrl" label="Image Url" />
+      <q-input filled v-model="decription" label="Decription" />
+
+      <q-btn
             color="primary"
             type="submit"
             @click="addCategory()"
             icon="cloud_upload"
           />
+     </div>
+
         </q-form>
       </div>
        </div>
@@ -83,3 +80,11 @@ export default {
   methods: {},
 };
 </script>
+<style>
+    .edit_category{
+    max-width: 500px;
+    text-align: center;
+    display: block;
+    margin-inline: auto;
+  }
+</style>
