@@ -4,20 +4,20 @@
       <!-- make form in center -->
       <div class="">
 
-        <q-form  >
+        <q-form  @submit="addCategory()" >
 
           <div class="justify-center flex text-h5 	q-mb-lg">Add Category</div>
     <!-- content -->
     <div class="q-gutter-md edit_category  " style="max-width: 500px">
 
-      <q-input filled v-model="name" label="Name" />
-      <q-input filled v-model="imageUrl" label="Image Url" />
-      <q-input filled v-model="decription" label="Decription" />
+      <q-input filled v-model="category.name" label="Name" />
+      <q-input filled v-model="category.imageUrl" label="Image Url" />
+      <q-input filled v-model="category.decription" label="Decription" />
 
       <q-btn
             color="primary"
             type="submit"
-            @click="addCategory()"
+
             icon="cloud_upload"
           />
      </div>
@@ -33,27 +33,38 @@ import { ref, computed, nextTick } from "vue";
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
-
+const category=ref({})
 export default {
   setup() {
+    const route = useRoute()
     const $q = useQuasar();
     const router = useRouter();
+    console.log('/admin/category/add/'+route.params.id+'/')
+    axios.get('http://localhost:8686/admin/category/add/'+route.params.id+'/')
+    .then(response => {
+      category.value = response.data
+    })
     return {
-      name: ref(""),
-      decription: ref(""),
-      imageUrl: ref(""),
+      category,
+      // name: ref(""),
+      // decription: ref(""),
+      // imageUrl: ref(""),
+      ///check new or old category
+
       addCategory() {
-        console.log("click on Submit", this.name);
+        console.log("click on Submit", category.name);
+        console.log("click on Submit cate", category.value);
         console.log("click on Submit", this.imageUrl);
-        const Category = {
-          name: this.name,
-          decription: this.decription,
-          imageUrl: this.imageUrl,
-        };
+        // const Category = {
+        //   name: this.name,
+        //   decription: this.decription,
+        //   imageUrl: this.imageUrl,
+        // };
         axios({
           method: "post",
           url: "http://localhost:8686/admin/category/add",
-          data: JSON.stringify(Category),
+          // data: JSON.stringify(category),
+          data: category.value,
           headers: {
             "Content-Type": "application/json",
           },
@@ -66,11 +77,12 @@ export default {
               avatar:'/img/trangTi.png',
             })
             console.log("Category saved");
-            router.replace("/customer");
+            router.replace("/admin/category/edit");
           })
           .catch((err) => {
             console.log(err);
           });
+
       },
     };
   },
