@@ -45,7 +45,10 @@ const columns = [
 ]
 const rows = ref([]);
 import { useRoute, useRouter } from "vue-router";
+import { useQuasar } from "quasar";
+
 const router = useRouter();
+const $q = useQuasar()
 export default {
   // name: 'PageName',
 
@@ -71,7 +74,42 @@ export default {
       this.$router.push('/admin/category/add/'+props.row.id+'/')
 
 
-    }
+    },
+    deleteCategory(props){
+
+      this.$q.dialog({
+        title: 'Confirm',
+        message: 'Would you like to turn on the wifi?',
+        ok: {
+          push: true
+        },
+        cancel: {
+          push: true,
+          color: 'negative'
+        },
+        persistent: true
+      }).onOk(() => {
+        console.log('>>>> OK')
+        axios.delete('http://localhost:8686/admin/category/delete/'+props.row.id)
+      .then(response =>{
+       rows.value.splice(this.rows.indexOf(props.row), 1)
+       this.$q.notify({
+        message: 'Category was deleted.',
+          color: 'positive',
+          avatar: '/img/trangTi.png',
+
+
+       })
+       console.log('is deleted: ')
+      })
+      }).onCancel(() => {
+        console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        console.log('I am triggered on both OK and Cancel')
+      })
+
+
+    },
   }
 
 }
