@@ -9,9 +9,15 @@
         <div class="col-4 category" >Our Category</div>
 
         <div class="col-4"></div>
-         <q-btn to="/admin/category/add" color="secondary" label="Add category" class=""  />
       </div>
-      <div class="float-right"><q-btn to="/admin/category/edit" color="secondary" icon="edit" label="Edit Resource of Categories"></q-btn></div>
+      <div class="row">
+        <q-btn dense to="/admin/category/add" color="secondary" label="Add category" class="col-5"  />
+        <div class="col-2"></div>
+        <q-btn to="/admin/category/edit" color="secondary" icon="edit" label="Edit Resource" class="col-5"></q-btn>
+      </div>
+
+
+      <!-- <div class="float-right"></div> -->
     <q-separator></q-separator>
 
 
