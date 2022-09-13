@@ -8,7 +8,7 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
        { path : '/customer', name :'customer', component:() => import('src/pages/customer/Customer.vue')},
        { path : '/customer/:customerId', name :'detail', component:() => import('src/pages/customer/Detail.vue')},
-       { path : '/product/:id',
+       { path : '/product/',
          name:'product',
          component:() => import('src/pages/product/Product.vue')},
          {
@@ -21,6 +21,10 @@ const routes = [
          {path : '/admin/category/add/:id', name : 'categoryDetail', component:() => import('src/pages/product/AddCategory.vue')},
          {path : '/admin/category/edit', name : 'editCategory', component:() => import('src/pages/product/EditCategory.vue')},
          {path : '/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
+
+         //
+         {path : '/shopping', name : 'shopping', component:() => import('src/pages/shopping/Cart.vue')},
+
         //  {path : '/category/box', name : 'categoryBox', component:() => import('src/pages/product/CategoryBox.vue')},
 
 

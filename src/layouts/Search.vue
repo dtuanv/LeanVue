@@ -49,7 +49,7 @@
         />
       </q-tabs> -->
 <!-- </q-toolbar> -->
-<q-tabs >
+<q-tabs v-if="$q.screen.gt.sm" class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap" >
   <q-route-tab :to='"/"' label="Home" />
         <q-route-tab :to="{name:'customer'}" label="Customer"/>
         <q-route-tab
@@ -70,12 +70,28 @@
           label="Test"
 
           /> -->
-        <q-route-tab
+        <!-- <q-route-tab
 
           :to="{name:'reserve'}"
           replace
           label="Reserve"
-        />
+        /> -->
+              <!-- form of git -->
+        <!-- <div v-if="$q.screen.gt.sm" class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap">
+          <a href="javascript:void(0)" class="text-white">
+            Pull requests
+          </a>
+          <a href="javascript:void(0)" class="text-white">
+            Issues
+          </a>
+          <a href="javascript:void(0)" class="text-white">
+            Marketplace
+          </a>
+          <a href="javascript:void(0)" class="text-white">
+            Explore
+          </a>
+        </div> -->
+
       </q-tabs>
 </q-toolbar>
 
@@ -94,7 +110,7 @@
       >
         <q-scroll-area class="fit">
           <q-list padding>
-            <q-item clickable v-ripple to=""  >
+            <!-- <q-item clickable v-ripple to=""  >
               <q-item-section  avatar>
                 <q-icon  name="home"   />
 
@@ -103,7 +119,7 @@
               <q-item-section>
                 Home
               </q-item-section>
-            </q-item>
+            </q-item> -->
 
             <q-item  clickable v-ripple to="/customer">
               <q-item-section avatar>
@@ -112,6 +128,16 @@
 
               <q-item-section>
                 Customer
+              </q-item-section>
+            </q-item>
+
+            <q-item  clickable v-ripple to="/product">
+              <q-item-section avatar>
+                <q-icon name="shopping_bag" />
+              </q-item-section>
+
+              <q-item-section>
+                Product
               </q-item-section>
             </q-item>
 
