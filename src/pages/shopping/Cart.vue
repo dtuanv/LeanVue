@@ -15,7 +15,7 @@ export default {
 
   },
   computed:{
-    cartItems()
+    cartItems(){}
   },
   totalPrice(){
     let price = 0;

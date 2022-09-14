@@ -1,121 +1,78 @@
 <template>
+  <div class="q-pa-md">
 
-  <div class="row flex flex-center">
-    <div class="text-h4 ">Our Product</div>
+      <!-- make form in center -->
+      <div class="row">
 
-  </div>
-  <div class=" row flex flex-center q-mt-md text-h5"><q-btn label="Category Manager" to="/category"></q-btn></div>
-  <q-page>
-    <!-- content -->
-    <div class="q-pa-md row items-stretch">
-      <q-card
-        class="flex inline shadow-5 flex-center size card"
-        v-for="product in products"
-        :product="product"
-      >
-        <q-card-section>
-          <div class="text-h4 text-grey-9">{{ `${product.name}` }}</div>
-          <div class="text-subtitle2 flex flex-center">Viet Nam</div>
-        </q-card-section>
-        <q-card-section>
-          <q-icon
-            class="icon"
-            size="2rem"
-            v-if="product.isSelected"
-            name="done"
-          ></q-icon>
-        </q-card-section>
 
-        <q-img :src="product.img" :alt="product.name" />
+        <div class="col-4"></div>
+        <div class="col-4 product" >Our Product</div>
 
-        <q-seperator inset />
-        <q-card-section>
-          {{ product.decription }}
-        </q-card-section>
-        <!-- Rating -->
-        <q-card-section>
-          <q-rating
-            v-model="ratingModel"
-            :max="5"
-            size="2em"
-            :color="ratingModel > 3 ? 'light-green-7' : 'yellow-9'"
-            icon="emoji_emotions"
-          />
-        </q-card-section>
-        <!-- action -->
-        <q-card-section>
-          <q-card-actions vertical>
-            <q-ajax-bar color="green-7" />
-            <q-btn label="Select" @click="displayStatus($event, product)" />
-            <q-btn label="Chose" @click="getTodos" />
-            <q-btn label="Read More" />
-          </q-card-actions>
-        </q-card-section>
-      </q-card>
-      <!-- Dragon Fruit -->
-    </div>
-  </q-page>
+        <div class="col-4"></div>
+      </div>
+      <div class="row">
+        <q-btn dense to="/admin/product/add/0" color="secondary" label="Add product" class="col-5"  />
+        <div class="col-2"></div>
+        <q-btn to="/admin/product/edit" color="secondary" icon="edit" label="Edit Resource" class="col-5"></q-btn>
+      </div>
+
+
+      <!-- <div class="float-right"></div> -->
+    <q-separator></q-separator>
+
+
+
+      <!-- <div class="row"> -->
+      <div class="full-width row wrap justify-center items-start content-center ">
+        <div  class="col-xs-12 col-md-4 q-col-gutter-md wrap">
+        <div v-for="product in products" :key="product.id">
+          <productBox :product="product"></productBox>
+        </div>
+
+      </div>
+      </div>
+       </div>
+      <!-- <div class="col-6"></div> -->
+      <!-- <div class="col-6"></div> -->
 </template>
-
-<script>
-import { ref } from "vue";
+<script >
+import { ref, computed, nextTick } from "vue";
 import axios from "axios";
-
+import { useQuasar } from "quasar";
+import { useRoute, useRouter } from "vue-router";
+import Detail from "../customer/Detail.vue";
+import productBox from "src/components/product/ProductBox.vue";
+const products = ref([]);
 export default {
-  // name: 'PageName',
-  data() {
-    return {
-      products: [
-        {
-          name: "Corn",
-          img: "/img/corn.jpg",
-          decription:
-            "Vietnam has turned to imports of corn as a feed ingredient to support the level of meat production," +
-            "which increased nearly 30 percent in the last decade.",
-          isSelected: false,
-        },
-        {
-          name: "Rice",
-          img: "/img/ricevn.jpg",
-          decription: "Rice ",
-          isSelected: false,
-        },
-      ],
-    };
-  },
-  setup() {
-    const ratingModel = ref(3);
-
-    const getTodos = () => {
-      return axios.get("http://todo-api.quasarcast.com/todos");
-    };
-    return {
-      ratingModel,
-      getTodos,
-    };
-  },
-  methods: {
-    displayStatus(event, product) {
-      product.isSelected = !product.isSelected;
-      console.log("Selected", product.isSelected);
+    component: {productBox},
+    setup() {
+        const $q = useQuasar();
+        const router = useRouter();
+        axios.get("http://localhost:8686/product")
+            .then(response => {
+            products.value = response.data;
+            console.log(products.value);
+        })
+            .catch(err => {
+            console.log(err);
+        });
+        return {
+            products
+        };
     },
-  },
-  computed: {},
-};
+    data() {
+    },
+    methods: {},
+    components: { Detail, productBox }
+}
 </script>
-<style lang="css">
-.card {
-  border: 1px solid #ccc;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-.size {
-  height: 50rem;
-  max-width: 12rem;
-}
-.icon {
-  position: absolute;
-  bottom: 3rem;
-  color: green;
-}
+<style>
+  .product{
+    font-size: large;
+    text-align: center;
+  }
+  .cate-card{
+    width:100%;
+    height:100%
+  }
 </style>

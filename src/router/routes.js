@@ -8,9 +8,10 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
        { path : '/customer', name :'customer', component:() => import('src/pages/customer/Customer.vue')},
        { path : '/customer/:customerId', name :'detail', component:() => import('src/pages/customer/Detail.vue')},
-       { path : '/product/',
-         name:'product',
-         component:() => import('src/pages/product/Product.vue')},
+       { path : '/product', name :'product', component:() => import('src/pages/product/Product.vue')},
+       { path : '/product/1',
+         name:'product_1',
+         component:() => import('src/pages/product/Product_1.vue')},
          {
           path:'contact',
           name:'contact',
@@ -18,8 +19,11 @@ const routes = [
 
          },
          {path : '/admin/category/add', name : 'addCategory', component:() => import('src/pages/product/AddCategory.vue')},
+         {path : '/admin/product/add', name : 'addProduct', component:() => import('src/pages/product/AddProduct.vue')},
          {path : '/admin/category/add/:id', name : 'categoryDetail', component:() => import('src/pages/product/AddCategory.vue')},
+         {path : '/admin/product/add/:id', name : 'categoryDetail', component:() => import('src/pages/product/AddProduct.vue')},
          {path : '/admin/category/edit', name : 'editCategory', component:() => import('src/pages/product/EditCategory.vue')},
+         {path : '/admin/product/edit', name : 'editProduct', component:() => import('src/pages/product/EditProduct.vue')},
          {path : '/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
 
          //

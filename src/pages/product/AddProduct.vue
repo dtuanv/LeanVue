@@ -4,15 +4,15 @@
       <!-- make form in center -->
       <div class="">
 
-        <q-form  @submit="addCategory()" >
+        <q-form  @submit="addproduct()" >
 
-          <div class="justify-center flex text-h5 	q-mb-lg">Add Category</div>
+          <div class="justify-center flex text-h5 	q-mb-lg">Add product</div>
     <!-- content -->
-    <div class="q-gutter-md edit_category  " style="max-width: 500px">
+    <div class="q-gutter-md edit_product  " style="max-width: 500px">
 
-      <q-input filled v-model="category.name" label="Name" />
-      <q-input filled v-model="category.imageUrl" label="Image Url" />
-      <q-input filled v-model="category.decription" label="Decription" />
+      <q-input filled v-model="product.name" label="Name" />
+      <q-input filled v-model="product.imageUrl" label="Image Url" />
+      <q-input filled v-model="product.decription" label="Decription" />
 
       <q-btn
             color="primary"
@@ -33,52 +33,62 @@ import { ref, computed, nextTick } from "vue";
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
-const category=ref({})
+const product=ref({})
 export default {
   setup() {
     const route = useRoute()
     const $q = useQuasar();
     const router = useRouter();
-    console.log('/admin/category/add/'+route.params.id+'/')
-    console.log('/admin/category/add/ name: '+route.name+'/')
-    axios.get('http://localhost:8686/admin/category/add/'+route.params.id+'/')
+    console.log('/admin/product/add/'+route.params.id+'/')
+    if(route.params.id == 0){
+        product.value = {
+          name:"",
+          imageUrl:"",
+          decription:"",
+        }
+        }else{
+
+    axios.get('http://localhost:8686/admin/product/add/'+route.params.id+'/')
     .then(response => {
-      category.value = response.data
+      product.value = response.data
     })
+  }
     return {
-      category,
+      product,
       // name: ref(""),
       // decription: ref(""),
       // imageUrl: ref(""),
-      ///check new or old category
+      ///check new or old product
 
-      addCategory() {
-        console.log("click on Submit", category.name);
-        console.log("click on Submit cate", category.value);
+      addproduct() {
+        console.log("click on Submit", product.name);
+        console.log("click on Submit cate", product.value);
         console.log("click on Submit", this.imageUrl);
-        // const Category = {
+        // const product = {
         //   name: this.name,
         //   decription: this.decription,
         //   imageUrl: this.imageUrl,
         // };
+
+
         axios({
           method: "post",
-          url: "http://localhost:8686/admin/category/add",
-          // data: JSON.stringify(category),
-          data: category.value,
+          url: "http://localhost:8686/admin/product/add",
+          // data: JSON.stringify(product),
+          data: product.value,
           headers: {
             "Content-Type": "application/json",
           },
         })
           .then(() => {
             $q.notify({
-              message:'new Category was created',
+              message:'new product was created',
 
               color:'positive',
               avatar:'/img/trangTi.png',
             })
-            console.log("Category saved");
-            router.replace("/admin/category/edit");
+            console.log("product saved");
+            router.replace("/admin/product/edit");
           })
           .catch((err) => {
             console.log(err);
@@ -94,7 +104,7 @@ export default {
 };
 </script>
 <style>
-    .edit_category{
+    .edit_product{
     max-width: 500px;
     text-align: center;
     display: block;

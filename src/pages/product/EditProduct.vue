@@ -1,8 +1,8 @@
 <template>
   <q-page  class="q-pa-md  ">
-    <div class="justify-center flex text-h5 	q-mb-lg">Edit Resource of Category</div>
+    <div class="justify-center flex text-h5 	q-mb-lg">Edit Resource of Product</div>
     <!-- content -->
-    <!-- <div class="q-gutter-md edit_category  " style="max-width: 500px">
+    <!-- <div class="q-gutter-md edit_Product  " style="max-width: 500px">
 
       <q-input filled v-model="categories" label="Name" />
       <q-input filled v-model="text" label="Image Url" />
@@ -22,8 +22,8 @@
 
     <template v-slot:body-cell-action="props">
       <q-td :props="props">
-        <q-btn icon="edit" @click='editCategory(props)' dense></q-btn>
-        <q-btn icon="delete" color="negative" @click='deleteCategory(props)' dense></q-btn>
+        <q-btn icon="edit" @click='editProduct(props)' dense></q-btn>
+        <q-btn icon="delete" color="negative" @click='deleteProduct(props)' dense></q-btn>
 
       </q-td>
 
@@ -55,7 +55,7 @@ export default {
   // name: 'PageName',
   setup(){
     console.log("Route: ", checkPath);
-    axios.get("http://localhost:8686/category")
+    axios.get("http://localhost:8686/product")
             .then(response => {
             rows.value = response.data;
 
@@ -74,13 +74,13 @@ export default {
         };
   },
   methods:{
-    editCategory(props){
+    editProduct(props){
       console.log('Params: ',props.row.id)
-      this.$router.push('/admin/category/add/'+props.row.id+'/')
+      this.$router.push('/admin/product/add/'+props.row.id+'/')
 
 
     },
-    deleteCategory(props){
+    deleteProduct(props){
 
       this.$q.dialog({
         title: 'Confirm',
@@ -95,11 +95,11 @@ export default {
         persistent: true
       }).onOk(() => {
         console.log('>>>> OK')
-        axios.delete('http://localhost:8686/admin/category/delete/'+props.row.id)
+        axios.delete('http://localhost:8686/admin/product/delete/'+props.row.id)
       .then(response =>{
        rows.value.splice(this.rows.indexOf(props.row), 1)
        this.$q.notify({
-        message: 'Category was deleted.',
+        message: 'Product was deleted.',
           color: 'positive',
           avatar: '/img/trangTi.png',
 
@@ -120,7 +120,7 @@ export default {
 }
 </script>
 <style>
-  .edit_category{
+  .edit_Product{
     max-width: 500px;
     text-align: center;
     display: block;

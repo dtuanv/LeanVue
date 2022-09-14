@@ -7,7 +7,7 @@
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
 
         <q-btn flat no-caps no-wrap class="q-ml-xs" to="/">
-          <q-avatar><img src="/img/ricevn.jpg" alt=""></q-avatar>
+          <q-avatar><img src="/img/rice.png" alt=""></q-avatar>
           <q-toolbar-title shrink class="text-weight-bold">
             Jasmin
           </q-toolbar-title>
@@ -151,6 +151,15 @@
               </q-item-section>
             </q-item>
 
+            <q-item clickable v-ripple to="/admin">
+              <q-item-section avatar>
+                <q-icon name="person" />
+              </q-item-section>
+
+              <q-item-section>
+                Admin
+              </q-item-section>
+            </q-item>
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="drafts" />
