@@ -4,6 +4,7 @@
     <!-- (Optional) The Header -->
     <q-header  elevated class="bg-white text-grey-8 q-py-xs" height-hint="58" >
       <q-toolbar>
+
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
 
         <q-btn flat no-caps no-wrap class="q-ml-xs" to="/">
@@ -12,6 +13,7 @@
             Jasmin
           </q-toolbar-title>
         </q-btn>
+
 
         <!-- <q-toolbar-title>
           <q-avatar><img src="/img/ricevn.jpg" alt=""></q-avatar>
@@ -93,6 +95,12 @@
         </div> -->
 
       </q-tabs>
+
+      <q-btn class="absolute-top-right q-mt-sm q-mr-md" flat icon="shop" to="/shopping">
+        <q-badge color="red" floating transparent>
+        {{0}}
+      </q-badge>
+      </q-btn>
 </q-toolbar>
 
     </q-header>
@@ -224,7 +232,7 @@ import { ref } from 'vue'
 
 export default {
   // name: 'LayoutName',
-
+  // props:{countCart},
   setup () {
     const miniState = ref(false)
     const leftDrawerOpen = ref(false)

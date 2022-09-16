@@ -4,7 +4,7 @@ const state = {
       name:'Oanh',
       dueDate:'21/11/1998',
       gender: 'Male',
-      completed: false,
+      completed: true,
     },
     {id:2,
       name:'Tuan',
