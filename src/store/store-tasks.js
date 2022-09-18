@@ -19,18 +19,42 @@ const state = {
       gender:'Male',
       completed:false,
     }
+  ],
+  todos : [
+    {
+      title: 'Tuan title from store',
+      name: 'todo of Tuan',
+      completed:false,
+
+    },
+    {
+      title:'Oanh title from store',
+      name:'todo of Oanh',
+      completed:false,
+
+    },
   ]
 
 }
 const mutations = {
-
+  NEW_TODO({state}, todoItem){
+    state.todos.push({
+      title: todoItem,
+      completed: false
+    })
+  }
 }
 const actions = {
-
+  addNewTodo({commit}, todoItem){
+    commit('NEW_TODO', todoItem);
+  }
 }
 const getters = {
  tasks : (state) =>{
   return state.tasks
+ },
+ todos : (state) =>{
+  return state.todos
  }
 }
 export default {

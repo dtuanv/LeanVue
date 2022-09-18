@@ -35,7 +35,10 @@ const routes = [
          {path : '/admin', name : 'admin', component:() => import('src/pages/admin/Admin.vue')},
          {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
          {path : '/partner', name : 'partner', component:() => import('src/pages/Partner.vue')},
-         {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')}
+         {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')},
+         {path : '/test/todos', name : 'todosList', component:() => import('src/pages/storeTest/TodosList.vue')},
+
+        //  {path : '/todosList', name : 'todosList', component:() => import('src/pages/storeTest/TodosList.vue')},
     ]
   },
 

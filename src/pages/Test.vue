@@ -28,11 +28,22 @@
     <!-- <q-btn @click="changeValue" label="Change"></q-btn> -->
   </q-page>
   <!-- <div class="q-mt-md">Selected: {{ JSON.stringify(selected) }}</div> -->
+  <div>Test Store </div>
+  <div v-for="(todo,index) in todos" :key="index" :todo="todo">
+    <div>Testt</div>
+    <div>{{todo}}</div>
+      <div>{{todo.title}}</div>
+
+  </div>
 </template>
 
 <script>
 let x
 let y
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+const $store = useStore()
 export default {
 
   data() {
@@ -57,10 +68,18 @@ export default {
 
     }
   },
+  computed: {
+    todos(){
+      console.log("Store ",$store.state.todos)
+      return  $store.state.todos;
+    }
+  },
 
 
   setup(){
+    return {
 
+    }
 
   },
   methods: {
