@@ -47,7 +47,12 @@ const mutations = {
 const actions = {
   addNewTodo({commit}, todoItem){
     commit('NEW_TODO', todoItem);
-  }
+  },
+  updateTask(){
+    // task.completed = !task.completed
+    console.log("update Task")
+  },
+
 }
 const getters = {
  tasks : (state) =>{

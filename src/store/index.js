@@ -2,7 +2,7 @@ import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 
  import tasks from './store-tasks'
- import todos from './store-tasks'
+ import todos from './todos'
 
 /*
  * If not building with SSR mode, you can

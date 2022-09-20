@@ -7,7 +7,7 @@
         :task="task"
         :key="key"
         clickable
-        @click="task.completed = !task.completed"
+        @click="updateTask(c)"
         :class="!task.completed ? 'bg-orange-2' : 'bg-green-3'"
       >
         <q-item-section side top>
@@ -129,12 +129,29 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import { mapActions } from 'vuex';
+import { useStore } from 'vuex';
 
+const $store = useStore()
 export default {
+  setup(){
+
+    return{
+
+    }
+  },
   // name: 'IndexPage'
   computed: {
     ...mapGetters("tasks", ["tasks"]),
   },
+  method:{
+    ...mapActions("tasks", ['updateTask'])
+  //   updateTask(c){
+
+  //    $store.state.tasks.completed = !$store.state.tasks.completed
+  //   console.log("update Task",c)
+  // },
+  }
 };
 </script>
 
