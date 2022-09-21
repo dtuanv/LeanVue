@@ -48,7 +48,7 @@ export default {
     setup() {
         const $q = useQuasar();
         const router = useRouter();
-        axios.get("http://localhost:8686/category")
+        axios.get("http://localhost:8687/category")
             .then(response => {
             categories.value = response.data;
             console.log(categories.value);

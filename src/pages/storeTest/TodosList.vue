@@ -28,7 +28,7 @@ import { ref, computed, nextTick } from "vue";
   export default{
     data(){
       return{
-        // newTodoItem : ""
+         newTodoItem : ""
       };
     },
     components:{
@@ -70,7 +70,7 @@ import { ref, computed, nextTick } from "vue";
       // const customers = JSON.parse(JSON.stringify(cachedCustomer))
 
 
-
+      	console.log("Todos Stringiftify: ", todos)
       const customers = computed({
       get: () => $store.state.todos.customers,
       set: val => {

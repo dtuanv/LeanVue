@@ -38,27 +38,43 @@
 <script >
 import { ref, computed, nextTick } from "vue";
 import axios from "axios";
+import { useStore } from 'vuex';
+
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
 import Detail from "../customer/Detail.vue";
 import productBox from "src/components/product/ProductBox.vue";
-const products = ref([]);
+// const products = ref([]);
 export default {
     component: {productBox},
     setup() {
+  const $store = useStore()
+
         const $q = useQuasar();
         const router = useRouter();
-        axios.get("http://localhost:8686/product")
-            .then(response => {
-            products.value = response.data;
-            console.log(products.value);
-        })
-            .catch(err => {
-            console.log(err);
-        });
+        // axios.get("http://localhost:8687/product")
+        //     .then(response => {
+        //     products.value = response.data;
+        //     console.log(products.value);
+        // })
+        //     .catch(err => {
+        //     console.log(err);
+        // });
+          const products =computed({
+      get: () => $store.state.cache.products,
+          })
+
+          console.log("CachedProduct from store: ", products)
+
+          // const products = JSON.parse(JSON.stringify(cachedProducts))
+          // console.log("Product in String Object: ", products)
         return {
             products
         };
+    },
+    mounted(){
+      this.$store.dispatch('cache/getProduct');
+
     },
     data() {
     },

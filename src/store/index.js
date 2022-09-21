@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 
  import tasks from './store-tasks'
  import todos from './todos'
+ import cache from './cache'
 
 /*
  * If not building with SSR mode, you can
@@ -17,7 +18,8 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       tasks,
-      todos
+      todos,
+      cache,
     },
 
     // enable strict mode (adds overhead!)

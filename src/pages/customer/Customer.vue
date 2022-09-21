@@ -94,7 +94,7 @@ export default {
     // const rows = computed(() => allRows.slice(0, pageSize * (nextPage.value - 1)))
 
     axios
-      .get("http://localhost:8686/customer")
+      .get("http://localhost:8687/customer")
       .then((response) => {
         rows.value = response.data;
       })
@@ -129,7 +129,7 @@ export default {
       deleteRow(props) {
         console.log("props ", props),
           console.log(
-            "http://localhost:8686/customer/" + props.row.customerId + "/"
+            "http://localhost:8687/customer/" + props.row.customerId + "/"
           ),
           $q
             .dialog({
@@ -142,7 +142,7 @@ export default {
             .onOk(() => {
               axios
                 .delete(
-                  "http://localhost:8686/customer/" + props.row.customerId
+                  "http://localhost:8687/customer/" + props.row.customerId
                 )
                 .then((response) => {
                   rows.value.splice(this.rows.indexOf(props.row), 1);

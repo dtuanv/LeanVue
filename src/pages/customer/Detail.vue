@@ -45,7 +45,7 @@ export default {
       customer.value = { firstName: "" };
     } else {
       axios
-        .get("http://localhost:8686/customer/" + route.params.customerId)
+        .get("http://localhost:8687/customer/" + route.params.customerId)
         .then((response) => {
           customer.value = response.data;
           console.log(customer.value);
@@ -80,7 +80,7 @@ export default {
           console.log("Customer id = 0")
            axios({
             method: "post",
-            url: "http://localhost:8686/customer/saved",
+            url: "http://localhost:8687/customer/saved",
             data: customer.value,
 
           })
@@ -98,7 +98,7 @@ export default {
         } else {
           axios({
             method: 'put',
-            url:"http://localhost:8686/customer/" + customerId,
+            url:"http://localhost:8687/customer/" + customerId,
             data: customer.value,
           })
 

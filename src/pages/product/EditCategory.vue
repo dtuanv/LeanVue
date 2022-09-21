@@ -55,7 +55,7 @@ export default {
   // name: 'PageName',
   setup(){
     console.log("Route: ", checkPath);
-    axios.get("http://localhost:8686/category")
+    axios.get("http://localhost:8687/category")
             .then(response => {
             rows.value = response.data;
 
@@ -95,7 +95,7 @@ export default {
         persistent: true
       }).onOk(() => {
         console.log('>>>> OK')
-        axios.delete('http://localhost:8686/admin/category/delete/'+props.row.id)
+        axios.delete('http://localhost:8687/admin/category/delete/'+props.row.id)
       .then(response =>{
        rows.value.splice(this.rows.indexOf(props.row), 1)
        this.$q.notify({

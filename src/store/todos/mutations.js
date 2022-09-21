@@ -4,6 +4,6 @@ export const SET_CUSTOMER = (state, customer) => {
 }
 export const addNewTodo = (state, payload) => {
   console.log("SET_NewTodo",payload)
-  state.todos.push(payload)
+  state.todos.push({name: payload})
   console.log("state Todos ",state.todos)
 }

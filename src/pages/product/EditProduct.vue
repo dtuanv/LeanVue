@@ -40,6 +40,7 @@ const columns = [
   {name:'name', label:'Name', field:'name'},
   {name:'imageUrl', label:'Image Url', field:'imageUrl'},
   {name:'decription', label:'Decription', field:'decription'},
+  {name:'price', label:'Price', field:'price'},
   {name:'action', label:'Action', field:''},
 
 ]
@@ -55,7 +56,7 @@ export default {
   // name: 'PageName',
   setup(){
     console.log("Route: ", checkPath);
-    axios.get("http://localhost:8686/product")
+    axios.get("http://localhost:8687/product")
             .then(response => {
             rows.value = response.data;
 
@@ -95,7 +96,7 @@ export default {
         persistent: true
       }).onOk(() => {
         console.log('>>>> OK')
-        axios.delete('http://localhost:8686/admin/product/delete/'+props.row.id)
+        axios.delete('http://localhost:8687/admin/product/delete/'+props.row.id)
       .then(response =>{
        rows.value.splice(this.rows.indexOf(props.row), 1)
        this.$q.notify({

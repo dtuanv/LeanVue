@@ -13,6 +13,7 @@
       <q-input filled v-model="product.name" label="Name" />
       <q-input filled v-model="product.imageUrl" label="Image Url" />
       <q-input filled v-model="product.decription" label="Decription" />
+      <q-input filled v-model="product.price" label="Price" />
 
       <q-btn
             color="primary"
@@ -45,10 +46,11 @@ export default {
           name:"",
           imageUrl:"",
           decription:"",
+          price:"",
         }
         }else{
 
-    axios.get('http://localhost:8686/admin/product/add/'+route.params.id+'/')
+    axios.get('http://localhost:8687/admin/product/add/'+route.params.id+'/')
     .then(response => {
       product.value = response.data
     })
@@ -73,7 +75,7 @@ export default {
 
         axios({
           method: "post",
-          url: "http://localhost:8686/admin/product/add",
+          url: "http://localhost:8687/admin/product/add",
           // data: JSON.stringify(product),
           data: product.value,
           headers: {

@@ -41,7 +41,7 @@ export default {
     const router = useRouter();
     console.log('/admin/category/add/'+route.params.id+'/')
     console.log('/admin/category/add/ name: '+route.name+'/')
-    axios.get('http://localhost:8686/admin/category/add/'+route.params.id+'/')
+    axios.get('http://localhost:8687/admin/category/add/'+route.params.id+'/')
     .then(response => {
       category.value = response.data
     })
@@ -63,7 +63,7 @@ export default {
         // };
         axios({
           method: "post",
-          url: "http://localhost:8686/admin/category/add",
+          url: "http://localhost:8687/admin/category/add",
           // data: JSON.stringify(category),
           data: category.value,
           headers: {

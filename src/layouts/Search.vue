@@ -98,7 +98,7 @@
 
       <q-btn class="absolute-top-right q-mt-sm q-mr-md" flat icon="shop" to="/shopping">
         <q-badge color="red" floating transparent>
-        {{0}}
+        {{cartItemCount}}
       </q-badge>
       </q-btn>
 </q-toolbar>
@@ -229,15 +229,24 @@
 
 <script>
 import { ref } from 'vue'
+import { useStore } from 'vuex';
 
 export default {
   // name: 'LayoutName',
   // props:{countCart},
+  computed:{
+    cartItemCount(){
+      return this.$store.getters['cache/cartItemCount'];
+    }
+  },
   setup () {
     const miniState = ref(false)
     const leftDrawerOpen = ref(false)
+    const amountItem =ref(0)
+    const $store = useStore()
 
     return {
+      amountItem ,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
