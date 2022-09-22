@@ -13,15 +13,24 @@
     </div>
     <div class="q-ma-lg justify-center flex">Total: {{cartTotalPrice}} $</div>
   </div>
-    <div><q-btn to="/product" label="Back to Product"></q-btn> </div>
+  <div class="row">
+    <div class=" q-ml-lg"><q-btn to="/product" label="Back to Product"></q-btn> </div>
+    <div class=""></div>
+    <div class="">
+      <q-btn @click="itemCheckOut" class="" label="Check Out"  style="color: goldenrod;"></q-btn>
+    </div>
+  </div>
 </template>
 <script>
 import { useStore } from 'vuex';
 import { ref, computed, nextTick } from "vue";
 import {WebApi} from "/src/apis/WebApi";
+import axios from "axios";
 
 import { useQuasar } from "quasar";
 import mapActions from "vuex";
+const bill = ref({})
+
 export default {
   name:"Cart",
   setup() {
@@ -44,7 +53,35 @@ export default {
   console.log("CachedCart from store: ", items.value)
   console.log("total: ", $store.getters['cache/cartTotalPrice'])
   return{
+    bill,
     items,
+    itemCheckOut(){
+      axios({
+          method: "post",
+          url:  `${WebApi.server}/checkOut`,
+          // data: JSON.stringify(product),
+          data: bill.value = {
+            items: $store.state.cache.cart,
+            total: $store.getters['cache/cartTotalPrice']
+          },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then(() => {
+            $q.notify({
+              message:'checkouted',
+
+              color:'positive',
+              avatar:'/img/trangTi.png',
+            })
+            console.log("checkouted");
+            router.replace("/product");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    }
   }
 
   },
@@ -52,7 +89,8 @@ export default {
     cartItems(){},
     cartTotalPrice(){
       return  this.$store.getters['cache/cartTotalPrice'];
-    }
+    },
+
   },
  methods:{
   removeProductFromCart(product){
