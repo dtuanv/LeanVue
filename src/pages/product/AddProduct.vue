@@ -34,13 +34,15 @@ import { ref, computed, nextTick } from "vue";
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
+import {WebApi} from "/src/apis/WebApi";
+
 const product=ref({})
 export default {
   setup() {
     const route = useRoute()
     const $q = useQuasar();
     const router = useRouter();
-    console.log('/admin/product/add/'+route.params.id+'/')
+
     if(route.params.id == 0){
         product.value = {
           name:"",
@@ -50,7 +52,7 @@ export default {
         }
         }else{
 
-    axios.get('http://localhost:8687/admin/product/add/'+route.params.id+'/')
+    axios.get(`${WebApi.server}/admin/product/add/`+route.params.id+'/')
     .then(response => {
       product.value = response.data
     })
@@ -63,9 +65,7 @@ export default {
       ///check new or old product
 
       addproduct() {
-        console.log("click on Submit", product.name);
-        console.log("click on Submit cate", product.value);
-        console.log("click on Submit", this.imageUrl);
+
         // const product = {
         //   name: this.name,
         //   decription: this.decription,
@@ -75,7 +75,7 @@ export default {
 
         axios({
           method: "post",
-          url: "http://localhost:8687/admin/product/add",
+          url:  `${WebApi.server}/admin/product/add/`,
           // data: JSON.stringify(product),
           data: product.value,
           headers: {

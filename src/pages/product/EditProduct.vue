@@ -47,6 +47,7 @@ const columns = [
 const rows = ref([]);
 import { useRoute, useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import {WebApi} from "/src/apis/WebApi";
 
 const router = useRouter();
 const route = useRoute();
@@ -56,7 +57,8 @@ export default {
   // name: 'PageName',
   setup(){
     console.log("Route: ", checkPath);
-    axios.get("http://localhost:8687/product")
+
+    axios.get(`${WebApi.server}/product`)
             .then(response => {
             rows.value = response.data;
 
@@ -96,7 +98,8 @@ export default {
         persistent: true
       }).onOk(() => {
         console.log('>>>> OK')
-        axios.delete('http://localhost:8687/admin/product/delete/'+props.row.id)
+
+        axios.delete(`${WebApi.server}/admin/product/delete/`+props.row.id)
       .then(response =>{
        rows.value.splice(this.rows.indexOf(props.row), 1)
        this.$q.notify({

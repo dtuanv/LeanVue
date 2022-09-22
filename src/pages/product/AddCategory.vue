@@ -33,15 +33,16 @@ import { ref, computed, nextTick } from "vue";
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
+import {WebApi} from "/src/apis/WebApi";
+
 const category=ref({})
 export default {
   setup() {
     const route = useRoute()
     const $q = useQuasar();
     const router = useRouter();
-    console.log('/admin/category/add/'+route.params.id+'/')
-    console.log('/admin/category/add/ name: '+route.name+'/')
-    axios.get('http://localhost:8687/admin/category/add/'+route.params.id+'/')
+
+    axios.get(`${WebApi.server}/admin/category/add/`+route.params.id+'/')
     .then(response => {
       category.value = response.data
     })
@@ -53,9 +54,7 @@ export default {
       ///check new or old category
 
       addCategory() {
-        console.log("click on Submit", category.name);
-        console.log("click on Submit cate", category.value);
-        console.log("click on Submit", this.imageUrl);
+
         // const Category = {
         //   name: this.name,
         //   decription: this.decription,
@@ -63,7 +62,7 @@ export default {
         // };
         axios({
           method: "post",
-          url: "http://localhost:8687/admin/category/add",
+          url: `${WebApi.server}/admin/category/add/` ,
           // data: JSON.stringify(category),
           data: category.value,
           headers: {

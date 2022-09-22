@@ -13,14 +13,15 @@
     </div>
     <div class="q-ma-lg justify-center flex">Total: {{cartTotalPrice}} $</div>
   </div>
-
+    <div><q-btn to="/product" label="Back to Product"></q-btn> </div>
 </template>
 <script>
 import { useStore } from 'vuex';
 import { ref, computed, nextTick } from "vue";
+import {WebApi} from "/src/apis/WebApi";
 
 import { useQuasar } from "quasar";
-
+import mapActions from "vuex";
 export default {
   name:"Cart",
   setup() {
@@ -55,8 +56,13 @@ export default {
   },
  methods:{
   removeProductFromCart(product){
-    this.$store.dispatch("removeProductfromCart", product)
+    this.$store.dispatch("cache/removeProductFromCart", product)
   }
+  // removeProductFromCart(product){
+  //   this.$store.dispatch("cache/removeProductFromCart", product)
+
+  // },
+
  }
 }
 </script>

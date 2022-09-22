@@ -8,3 +8,8 @@ const result  = ages.filter(item => {
   return item >= 18
 })
 console.log("result ",result)
+
+const resultNotAdult = ages.filter( age => {
+  return age < 9
+})
+console.log("resultNotAdult ",resultNotAdult)

@@ -44,6 +44,10 @@ import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
 import Detail from "../customer/Detail.vue";
 import productBox from "src/components/product/ProductBox.vue";
+import Product from "/src/apis/Product.js"
+import {WebApi} from "/src/apis/WebApi";
+
+
 // const products = ref([]);
 export default {
     component: {productBox},

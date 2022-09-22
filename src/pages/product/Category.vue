@@ -42,13 +42,15 @@ import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
 import Detail from "../customer/Detail.vue";
 import CategoryBox from "src/components/category/CategoryBox.vue";
+import {WebApi} from "/src/apis/WebApi";
+
 const categories = ref([]);
 export default {
     component: {CategoryBox},
     setup() {
         const $q = useQuasar();
         const router = useRouter();
-        axios.get("http://localhost:8687/category")
+        axios.get( `${WebApi.server}/category`)
             .then(response => {
             categories.value = response.data;
             console.log(categories.value);

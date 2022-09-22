@@ -60,6 +60,10 @@ import { ref, computed, nextTick } from 'vue'
 import axios from "axios";
 import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
+import {WebApi} from "/src/apis/WebApi";
+import Product from "/src/apis/Product.js"
+
+
 
 const columns = [
   { name: "firstName", label: "First Name", field: "firstName", sortable: true, },
@@ -93,8 +97,11 @@ export default {
 
     // const rows = computed(() => allRows.slice(0, pageSize * (nextPage.value - 1)))
 
-    axios
-      .get("http://localhost:8687/customer")
+    // axios
+    //   .get("http://localhost:8687/customer")
+    // Product.allCustomer()
+    console.log("WebApi : ",`${WebApi.server}` )
+      axios.get(`${WebApi.server}/customer`)
       .then((response) => {
         rows.value = response.data;
       })
@@ -128,9 +135,7 @@ export default {
       },
       deleteRow(props) {
         console.log("props ", props),
-          console.log(
-            "http://localhost:8687/customer/" + props.row.customerId + "/"
-          ),
+
           $q
             .dialog({
               dark: true,
@@ -142,7 +147,7 @@ export default {
             .onOk(() => {
               axios
                 .delete(
-                  "http://localhost:8687/customer/" + props.row.customerId
+                  `${WebApi.server}/customer/` + props.row.customerId
                 )
                 .then((response) => {
                   rows.value.splice(this.rows.indexOf(props.row), 1);
