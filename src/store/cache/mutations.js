@@ -30,3 +30,7 @@ export const REMOVE_FROM_CART = (state, product) => {
 
   })
 }
+export const CHECK_OUT = (state) =>{
+  console.log("Check Out")
+  return state.cart = []
+}

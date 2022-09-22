@@ -29,11 +29,13 @@ const routes = [
 
          //
          {path : '/shopping', name : 'shopping', component:() => import('src/pages/shopping/Cart.vue')},
+         {path : '/thank', name : 'thank', component:() => import('src/pages/Thank.vue')},
 
         //  {path : '/category/box', name : 'categoryBox', component:() => import('src/pages/product/CategoryBox.vue')},
 
 
          {path : '/admin', name : 'admin', component:() => import('src/pages/admin/Admin.vue')},
+         {path : '/admin/bill', name : 'adminBill', component:() => import('src/pages/admin/Bill.vue')},
          {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
          {path : '/partner', name : 'partner', component:() => import('src/pages/Partner.vue')},
          {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')},

@@ -19,3 +19,7 @@ export const addProductToCart = ({commit}, { product, quantity}) => {
 export const removeProductFromCart = ({commit},product) => {
   commit('REMOVE_FROM_CART', product)
 }
+export const checkOut = ({commit}) => {
+      commit('CHECK_OUT')
+
+}
