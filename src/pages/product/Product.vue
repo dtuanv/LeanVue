@@ -68,7 +68,7 @@ export default {
       get: () => $store.state.cache.products,
           })
 
-          console.log("CachedProduct from store: ", products)
+
 
           // const products = JSON.parse(JSON.stringify(cachedProducts))
           // console.log("Product in String Object: ", products)

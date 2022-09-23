@@ -1,7 +1,7 @@
 export const SET_PRODUCT= (state, product) => {
-  console.log("SET_Product")
+  // console.log("SET_Product")
   state.products = product
-  console.log("product in mutation ", state.products )
+  // console.log("product in mutation ", state.products )
   // console.log("product in mutation per String",  JSON.parse(JSON.stringify(state.products)) )
 }
 // export const addNewTodo = (state, payload) => {
@@ -31,6 +31,6 @@ export const REMOVE_FROM_CART = (state, product) => {
   })
 }
 export const CHECK_OUT = (state) =>{
-  console.log("Check Out")
+  // console.log("Check Out")
   return state.cart = []
 }

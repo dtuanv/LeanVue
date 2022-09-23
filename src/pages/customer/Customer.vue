@@ -100,7 +100,7 @@ export default {
     // axios
     //   .get("http://localhost:8687/customer")
     // Product.allCustomer()
-    console.log("WebApi : ",`${WebApi.server}` )
+
       axios.get(`${WebApi.server}/customer`)
       .then((response) => {
         rows.value = response.data;
@@ -108,8 +108,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    console.log("axios");
-    console.log(rows);
+
     return {
       columns,
       rows,

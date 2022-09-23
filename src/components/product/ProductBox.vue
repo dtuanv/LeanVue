@@ -84,7 +84,7 @@ export default {
 
    function subtractItem(){
       if(countItem.value === 0){
-      console.log("Stopp count")
+
       this.countItem = 0;
       return;
     }
@@ -93,7 +93,7 @@ export default {
     }
    };
    if($store.state.cache.cart.length > 1){
-    console.log("check quantity")
+
     let productInCart = $store.state.cache.cart.find(item => {
     return item.product.id != undefined;
   })
