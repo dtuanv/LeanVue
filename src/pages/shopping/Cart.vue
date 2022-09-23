@@ -53,24 +53,19 @@ const products = ref([])
   const items =computed({
     get: () => $store.state.cache.cart,
   })
-  // console.log("length of cart: ",$store.state.cache.cart.length )
-  // console.log("CachedCart from store: ", items.value)
-  // console.log("total: ", $store.getters['cache/cartTotalPrice'])
 
-  // console.log("check store t", $store.state.cache.cart.length)
-  console.log("items.value ",items.value),
     console.log("$store.state.cache.cart ",$store.state.cache.cart)
     items.value.forEach(item => {
-      const products = ref([])
+      // const products = ref([])
       // hashmap.set(item.product, item.quantity)
-      products.push({
+      products.value.push({
         product: item.product,
-        quantity:item.quantity
+
 
       })
 
     })
-console.log("hashproductsMap",products)
+
   return{
     products,
     bill,
@@ -101,8 +96,8 @@ console.log("hashproductsMap",products)
           url:  `${WebApi.server}/checkOut`,
           // data: JSON.stringify(product),
 
-          data: bill.value = {
-            product: items.value,
+          data: bill.value= {
+            product:$store.state.cache.cart,
             total: $store.getters['cache/cartTotalPrice']
           },
           headers: {
@@ -110,7 +105,7 @@ console.log("hashproductsMap",products)
           },
         })
           .then(() => {
-            console.log("check oit come")
+            console.log("check Bill ", bill)
 
             $q.notify({
               message:'checkouted',
@@ -118,7 +113,7 @@ console.log("hashproductsMap",products)
               color:'positive',
               avatar:'/img/trangTi.png',
             })
-            console.log("checkouted");
+
 
             router.replace("/thank");
             $store.dispatch("cache/checkOut")
