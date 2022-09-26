@@ -36,6 +36,7 @@ const routes = [
 
          {path : '/admin', name : 'admin', component:() => import('src/pages/admin/Admin.vue')},
          {path : '/admin/bill', name : 'adminBill', component:() => import('src/pages/admin/Bill.vue')},
+         {path : '/admin/history', name : 'adminHistory', component:() => import('src/pages/admin/OrderHistory.vue')},
          {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
          {path : '/partner', name : 'partner', component:() => import('src/pages/Partner.vue')},
          {path : '/test', name : 'test', component:() => import('src/pages/Test.vue')},
