@@ -148,6 +148,15 @@
                 Product
               </q-item-section>
             </q-item>
+            <q-item clickable v-ripple to="/reservation">
+              <q-item-section avatar>
+                <q-icon name="book_online" />
+              </q-item-section>
+
+              <q-item-section>
+                Reservation
+              </q-item-section>
+            </q-item>
 
             <q-item clickable v-ripple to="/contact">
               <q-item-section avatar>
