@@ -34,3 +34,10 @@ export const CHECK_OUT = (state) =>{
   // console.log("Check Out")
   return state.cart = []
 }
+export const CHANGE_GUEST_NUM = (state, orGuestNum) =>{
+  console.log("change in mutation")
+  state.guestNum = orGuestNum
+  console.log( state.guestNum )
+  return
+}
+

@@ -52,6 +52,7 @@
       </q-tabs> -->
 <!-- </q-toolbar> -->
 <q-tabs v-if="$q.screen.gt.sm" class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap" >
+<!-- <q-tabs v-if="true" class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap" > -->
   <q-route-tab :to='"/"' label="Home" />
         <q-route-tab :to="{name:'customer'}" label="Customer"/>
         <q-route-tab

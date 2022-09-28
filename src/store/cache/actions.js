@@ -23,3 +23,6 @@ export const checkOut = ({commit}) => {
       commit('CHECK_OUT')
 
 }
+export const changeGuestNum = ({commit}, orGuestNum) =>{
+  commit('CHANGE_GUEST_NUM',orGuestNum)
+}

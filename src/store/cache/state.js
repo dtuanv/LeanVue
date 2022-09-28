@@ -3,6 +3,47 @@ export default function () {
    products:[],
    cart: [],
    bills:[],
+   reservations:[
+    { key:1,
+      imgUrl:'family.png',
+      icon:'east'
+
+    },
+    { key:2,
+      imgUrl:'calendar.png',
+      icon:'east'
+    },
+    {key:3,
+      imgUrl:'time.png',
+      icon:'east'
+
+
+    },
+    { key:4,
+      imgUrl:'done.png',
+    },
+   ],
+   guests:[
+    {
+      label:'1',
+      value:1
+    },
+    {
+      label:'2',
+      value:2
+    },
+    {
+      label:'3',
+      value:3
+    },
+    {
+      label:'4',
+      value:4
+    },
+
+   ],
+   guestNum:0,
+
    times : [
 
     {
@@ -90,6 +131,7 @@ export default function () {
       value: "21:00"
     },
 
-  ]
+  ],
+
   }
 }
