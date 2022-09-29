@@ -6,16 +6,21 @@ export default function () {
    reservations:[
     { key:1,
       imgUrl:'family.png',
-      icon:'east'
+      icon:'east',
+      status: false,
 
     },
     { key:2,
       imgUrl:'calendar.png',
-      icon:'east'
+      icon:'east',
+      status: false,
+
     },
     {key:3,
       imgUrl:'time.png',
-      icon:'east'
+      icon:'east',
+      status: false,
+
 
 
     },
@@ -42,7 +47,11 @@ export default function () {
     },
 
    ],
-   guestNum:0,
+   guestInfo:{
+    guestNum:0,
+    orGuestNum:'',
+
+   },
 
    times : [
 

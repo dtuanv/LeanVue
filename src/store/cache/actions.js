@@ -26,3 +26,9 @@ export const checkOut = ({commit}) => {
 export const changeGuestNum = ({commit}, orGuestNum) =>{
   commit('CHANGE_GUEST_NUM',orGuestNum)
 }
+export const changeStatus = ({commit}, key,input) =>{
+  commit('CHANGE_STATUS', key,input)
+}
+export const resetStatus = ({commit}) =>{
+  commit('RESET_STATUS')
+}

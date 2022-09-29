@@ -12,7 +12,7 @@
           <img :src="'img/'+reservation.imgUrl " />
 
 
-          <q-badge floating color="teal">
+          <q-badge v-if="reservation.status" floating color="teal">
             <q-icon name="done"></q-icon>
           </q-badge>
         </q-avatar>
@@ -43,7 +43,7 @@ import { useRoute, useRouter } from "vue-router";
 
     setup(){
       // const store = useStore()
-      console.log("re in Component ",)
+
 
 
       return{

@@ -35,9 +35,37 @@ export const CHECK_OUT = (state) =>{
   return state.cart = []
 }
 export const CHANGE_GUEST_NUM = (state, orGuestNum) =>{
-  console.log("change in mutation")
+  // console.log("change in mutation")
   state.guestNum = orGuestNum
-  console.log( state.guestNum )
+  // console.log( state.guestNum )
   return
+}
+export const CHANGE_STATUS = (state, key,input) =>{
+ let reservationIcon= state.reservations.find(re => {
+    return re.key === key
+  })
+
+  if(reservationIcon && input !=''){
+
+
+    reservationIcon.status = true
+  }
+
+}
+export const RESET_STATUS = (state) =>{
+   state.guestInfo = {
+    guestNum:0,
+    orGuestNum:'' }
+
+  // let  updateStatus = state.reservations.find(re =>{
+  //     return re.icon==='east'
+  //   })
+  //   if(updateStatus){
+  //     updateStatus.status = false
+  //   }
+  state.reservations.forEach(re =>{
+    re.status = false
+  })
+
 }
 
