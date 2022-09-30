@@ -25,6 +25,7 @@ const routes = [
          {path : '/admin/product/add/:id', name : 'categoryDetail', component:() => import('src/pages/product/AddProduct.vue')},
          {path : '/admin/category/edit', name : 'editCategory', component:() => import('src/pages/product/EditCategory.vue')},
          {path : '/admin/product/edit', name : 'editProduct', component:() => import('src/pages/product/EditProduct.vue')},
+         {path : '/admin/reservation', name : 'adminResieveren', component:() => import('src/pages/admin/ReservierungManager.vue')},
          {path : '/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
 
          //
