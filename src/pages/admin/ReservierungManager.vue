@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md">
-    <div class="text-h5 flex justify-center">Reservierung</div>
+    <div class="text-h5 flex justify-center">Reservierung </div>
     <!-- <div>
         <div class="q-pb-sm q-gutter-sm">
           <q-badge color="teal">
@@ -13,6 +13,8 @@
 
         <q-date v-model="formattedString" mask="DD-MM-YYYY" />
       </div> -->
+
+      <div v-if="reservations.length===0">Keine Reservierung</div>
       <div class="q-mb-sm">
       <q-badge color="teal">
         Model: {{ formattedString }}
@@ -37,6 +39,8 @@
         <q-card-section>
           <!-- <div v-if="reservation.time > '18:00'">{{ reservation.time }}</div> -->
           <div>{{ reservation.time }}</div>
+
+          <q-btn label="Arrived"  class="float-right"  @click="changeStatus(reservation)" :color="reservation.status == 2 ? 'red': 'positive'"></q-btn>
         </q-card-section>
         <q-card-actions>
           <div >
@@ -44,6 +48,7 @@
             <div>Mobil: {{reservation.mobil}} </div>
             <div >Number of Guests: {{ reservation.guestNum }}</div>
           </div>
+
         </q-card-actions>
       </q-card>
     </div>
@@ -61,6 +66,14 @@ import { useQuasar } from "quasar";
 import { date } from "quasar";
 const reservations = ref([]);
 export default {
+  methods:{
+    changeStatus(reservation){
+      reservation.status = 1
+      console.log("reservation.status",reservation)
+      axios.put(`${WebApi.server}/admin/reservation/changeStatus/`+parseInt(reservation.id))
+},
+
+  },
   setup() {
     const today = Date.now();
     const formattedString = ref(date.formatDate(today, "DD-MM-YYYY"));
