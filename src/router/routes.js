@@ -27,6 +27,7 @@ const routes = [
          {path : '/admin/product/edit', name : 'editProduct', component:() => import('src/pages/product/EditProduct.vue')},
          {path : '/admin/reservation', name : 'adminResieveren', component:() => import('src/pages/admin/ReservierungManager.vue')},
          {path : '/category', name : 'category', component:() => import('src/pages/product/Category.vue')},
+         {path : '/login', name : 'login', component:() => import('src/pages/Login.vue')},
 
          //
          {path : '/shopping', name : 'shopping', component:() => import('src/pages/shopping/Cart.vue')},

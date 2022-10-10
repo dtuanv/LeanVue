@@ -178,12 +178,12 @@
                 Admin
               </q-item-section>
             </q-item>
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/login">
               <q-item-section avatar>
                 <q-icon name="drafts" />
               </q-item-section>
 
-              <q-item-section>
+              <q-item-section  >
                 Login
               </q-item-section>
             </q-item>
